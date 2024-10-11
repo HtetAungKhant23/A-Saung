@@ -15,6 +15,7 @@ const logger = new Logger('bootstrap');
 function keepAliveServer() {
   const url = 'https://a-saung.onrender.com/api/v1/health-check';
   const kokyaw_url = 'https://password-strength-backend.onrender.com/classify_password?password=123';
+  const m4_url = 'https://spend-wise-pe9c.onrender.com';
   axios
     .get(url)
     .then(() => {})
@@ -23,6 +24,12 @@ function keepAliveServer() {
     });
   axios
     .get(kokyaw_url)
+    .then(() => {})
+    .catch((e) => {
+      console.error(e);
+    });
+  axios
+    .get(m4_url)
     .then(() => {})
     .catch((e) => {
       console.error(e);
