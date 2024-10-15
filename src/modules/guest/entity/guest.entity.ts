@@ -7,6 +7,10 @@ export class GuestEntity {
 
   phone: string;
 
+  image?: string;
+
+  address?: string;
+
   gender: GENDER;
 
   startDate: Date | undefined;

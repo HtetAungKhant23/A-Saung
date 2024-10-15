@@ -11,6 +11,8 @@ model Guest {
   id        String  @id @default(uuid())
   name      String
   phone     String  @unique
+  image     String?
+  address   String?
   gender    GENDER  @default(M)
   isDeleted Boolean @default(false)
 

@@ -11,6 +11,8 @@ import {
   UnauthorizedExceptionFilter,
 } from '@core/filters';
 import { RequestLoggerMiddleware } from '@core/middleware/logging.middleware';
+import { join } from 'path';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import { AppController } from './app.controller';
 import { TimeoutInterceptor } from './core/interceptors/timeout.interceptor';
 import { RouterModule } from './modules/router.module';
@@ -18,7 +20,14 @@ import { InternalServerErrorExceptionFilter } from './core/filters/internal-serv
 import { ValidationExceptionFilter } from './core/filters/validatin.exception-filter';
 
 @Module({
-  imports: [CommonModule, RouterModule.forRoot()],
+  imports: [
+    CommonModule,
+    RouterModule.forRoot(),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'uploads'),
+      serveRoot: '/uploads',
+    }),
+  ],
   controllers: [AppController],
   providers: [
     {
